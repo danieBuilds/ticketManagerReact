@@ -126,7 +126,6 @@
 
 import { useState } from 'react';
 import "../styles/dashboard.css";
-import LandingPage from './landingPage';
 export default function Dashboard() {
   const [showAddTaskScreen, setShowAddTaskScreen] = useState(false);
   const [addTickets, setAddTickets] = useState([]);
