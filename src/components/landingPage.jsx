@@ -1,0 +1,78 @@
+import "../styles/landingPage.css";
+import waveImg from "../assets/wave.svg";
+export default function LandingPage() {
+    
+    function naviate(e) {
+        const wasClicked = e.target.innerText;
+
+        if(wasClicked === "Login"){
+            window.location.href = "/login"
+        } else if (wasClicked === "Get Started"){
+            window.location.href = "/signUp"
+        }
+    }
+  return (
+    <>
+        <nav className="landingPage-nav">
+            <div className="nav-logo">
+                <h1>tickHandler</h1>
+            </div>
+            <div className="nav-buttons">
+                <button onClick={naviate} type="button">
+                    Login
+                </button>
+                <button onClick={naviate} type="button">
+                    Get Started
+                </button>
+            </div>
+        </nav>
+
+        <section id="hero">
+            <div className="hero-container">
+                <h1>Manage tickets effortlessly anytime,anywhere</h1>
+                <p>
+                    Streamline your ticket management process with our intuitive platform designed for efficiency and ease of use.
+                    managment process made efficient
+                </p>
+                <div className="hero-button">
+                    <button onClick={naviate} type="button">
+                        Get Started
+                    </button>
+                    <button onClick={naviate} type="button">
+                        Login
+                    </button>
+                </div>
+                <span>Secure. Fast. Built for you.</span>
+            </div>
+            <img src={waveImg} alt="" />
+        </section>
+        <section id="features">
+            <div className="feature-intro">
+                <h1>Features</h1>
+                <p>Explore the powerful features that make ticket management a breeze.</p>
+           </div>
+            <div className="feature-cards">
+                <div className="feature-card">
+                    <h2>Create tickets</h2>
+                    <p>Description of feature one.</p>
+                </div>
+                <div className="feature-card">
+                    <h2>Edit Tickets</h2>
+                    <p>Description of feature two.</p>
+                </div>
+                <div className="feature-card">
+                    <h2>View Tickets</h2>
+                    <p>Description of feature three.</p>
+                </div>
+                <div className="feature-card">
+                    <h2>Delete Tickets</h2>
+                    <p>Description of feature three.</p>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2024 tickHandler. All rights reserved.</p>
+        </footer>
+    </>
+  )
+}
