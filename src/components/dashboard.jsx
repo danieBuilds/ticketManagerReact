@@ -1,129 +1,3 @@
-// import { useState } from 'react';
-
-// export default function Dashboard() {
-
-//     const [showAddTaskScreen, setShowAddTaskScreen] = useState(false)
-
-//     const [addTickets, setAddTickets] = useState([]);
-//     const [taskName, setTaskname] = useState('');
-//     const [taskDesc, setTaskDesc] = useState('');
-//     const [showFullDetails, setShowFullDetails] = useState(false)
-
-
-
-
-
-
-//     function newTicket(formData) {
-//         formData.preventDefault();
-//         const newTicket = {
-//             name: formData.get("ticketName"),
-//             desc: formData.get("ticketDesc"),
-//             status: "open"
-//         };
-//         setAddTickets(prevAddTicket => [prevAddTicket, newTicket]);
-        
-//         setTaskname('');
-//         setTaskDesc('');
-
-//         setShowAddTaskScreen(false);
-//     }
-
-//     function addTicketBtn() {
-//         setShowAddTaskScreen(prevShowAddTaskScreen => !prevShowAddTaskScreen);
-//     }
-
-//     function fullDetails() {
-//         setShowFullDetails(prevshowFullDetail => !prevshowFullDetail)
-//     }
-
-//     function deleteTicket(tobeDeleted) {
-//        setAddTickets( prevaddTickets => prevaddTickets.filter(addTicket => addTicket !== tobeDeleted));
-//     }
-
-
-
-//   return (
-//     <>
-//         <nav>
-//             <div className="nav-logo">
-//                 <h1>tickHandler Dashboard</h1>
-//             </div>
-//             <div className="nav-contents">
-//                 <button type="button">
-//                     tickets
-//                 </button>
-//                 <button type="button">
-//                     Logout
-//                 </button>
-//             </div>
-//         </nav>
-//         <section id="dashboard-main">
-//             <div className="dashboard-container">
-//                 <h1>Welcome to your Dashboard</h1>
-//                 <p>Manage your tickets efficiently and stay organized.</p>
-//             </div>
-//             <div className="addTicket">
-//                 <header>
-//                     <h1>Add New Ticket</h1>
-//                 </header>
-//                 <form onSubmit={newTicket}>
-//                     <input type="text" name="ticketName" placeholder="Ticket Title" />
-//                     <textarea value={taskDesc} onChange={(e) => setTaskDesc(e.target.value)} name="ticketDesc" placeholder="Ticket Description"></textarea>
-//                     <button type="submit">Add Ticket</button>
-//                 </form>
-//             </div>
-//             <div className="showTicket">
-//                 <header>
-//                     <h1>Edit ticket</h1>
-//                 </header>
-//                 <div className="ticket-info">
-//                     <h2>{}</h2>
-//                     <p>{}</p>
-//                     <span>Status: {}</span>
-//                 </div>
-//             </div>
-
-//             <div className="ticket-manager">
-//                 <header>
-//                     <h1>Tickets</h1>
-//                     <button onClick={addTicketBtn} type="button">
-//                         + Add Ticket
-//                     </button>
-//                 </header>
-//                 <body>
-//                     <div className="sortTickets">
-//                         <button>all</button>
-//                         <button>open</button>
-//                         <button>in progress</button>
-//                         <button>closed</button>
-//                     </div>
-//                     <div className="ticket-cards">
-//                         {addTickets.map( addTicket => <div className={ showFullDetails? "fullTicket-card" : "ticket-card"}>
-//                             <header>  
-//                                 <h2>{taskName}</h2>
-//                                 {showFullDetails === true && <p>{taskDesc}</p>}
-//                                 <div className="dropdown">
-//                                     <button className="dropbtn">⋮</button>
-//                                     <div className="dropdown-content">
-//                                         <a >Edit</a>
-//                                         <a onClick={()=> deleteTicket(ticket)}>Delete</a>
-//                                         <a onClick={fullDetails} href="">show Details</a>
-//                                     </div>
-//                                 </div>
-//                             </header>
-//                             <div className="status">
-//                                 <span>{}</span>
-//                             </div>
-//                         </div>)}
-//                     </div>
-//                 </body>
-//             </div>
-//         </section>
-//     </> 
-//   )
-// }
-
 import { useState } from 'react';
 import "../styles/dashboard.css";
 export default function Dashboard() {
@@ -135,23 +9,34 @@ export default function Dashboard() {
   const [showTickets, setShowTickets] = useState(false);
   const [showDashboard, setShowDashboard] = useState(true);
   const [ticketStatus, setTicketStatus] = useState('');
+  const [error, setError] = useState('');
+  const [activeFilter, setActiveFilter] = useState('all');
 
   function satus(ticket) {
     
   }
 
   function newTicket(e) {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
+
+    if (taskName.trim().length < 1) {
+        setError("Ticket title cannot be empty");
+        return;
+    }else if (taskDesc.trim().length < 1) {
+        setError("Ticket description cannot be empty");
+        return;
+    }
 
     const newTicket = {
-      name: taskName,
-      desc: taskDesc,
-      status: ticketStatus
+        name: taskName,
+        desc: taskDesc,
+        status: ticketStatus || 'open' 
     };
 
     setAddTickets((prev) => [...prev, newTicket]);
     setTaskName('');
     setTaskDesc('');
+    setError(''); 
     setShowAddTaskScreen(false);
   }
 
@@ -173,6 +58,10 @@ export default function Dashboard() {
   function landingPage() {
     window.location.href = "/"
   }
+  function filterTickets(status) {
+    setActiveFilter(status);
+  }
+
 //   function statusLabel({status}) {
 //     const statusColors = {
 //         open: 'orange',
@@ -188,7 +77,7 @@ export default function Dashboard() {
           <h1>tickHandler Dashboard</h1>
         </div>
         <div className="nav-contents">
-          <button onClick={showTicketsSection} type="button">{showTickets? "dashbord" : "tickets"}</button>
+          <button onClick={showTicketsSection} type="button">{showTickets? "dashboard" : "tickets"}</button>
           <button onClick={landingPage} type="button">Logout</button>
         </div>
       </nav>
@@ -244,6 +133,7 @@ export default function Dashboard() {
                     <option value="closed">Closed</option>
                 </select>
               </div>
+              {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
               <button type="submit">Add Ticket</button>
             </form>
           </div>
@@ -258,37 +148,59 @@ export default function Dashboard() {
           </header>
 
           <div className="sortTickets">
-            <button>all</button>
-            <button>open</button>
-            <button>in progress</button>
-            <button>closed</button>
+            <button 
+                className={activeFilter === 'all' ? 'active' : ''} 
+                onClick={() => filterTickets('all')}
+            >
+                all
+            </button>
+            <button 
+                className={activeFilter === 'open' ? 'active' : ''} 
+                onClick={() => filterTickets('open')}
+            >
+                open
+            </button>
+            <button 
+                className={activeFilter === 'in progress' ? 'active' : ''} 
+                onClick={() => filterTickets('in progress')}
+            >
+                in progress
+            </button>
+            <button 
+                className={activeFilter === 'closed' ? 'active' : ''} 
+                onClick={() => filterTickets('closed')}
+            >
+                closed
+            </button>
           </div>
 
-          <div className="ticket-cards">
-            {addTickets.map((ticket, index) => (
-              <div
-                key={index}
-                className={showFullDetails ? 'fullTicket-card' : 'ticket-card'}
-              >
-                <header>
-                  <h2>{ticket.name}</h2>
-                  {showFullDetails && <p>{ticket.desc}</p>}
-                  <div className="dropdown">
-                    <button className="dropbtn">⋮</button>
-                    <div className="dropdown-content">
-                      <a>Edit</a>
-                      <a onClick={() => deleteTicket(ticket)}>Delete</a>
-                      <a onClick={fullDetails}>Show Details</a>
-                    </div>
+          {addTickets.length > 0 && <div className="ticket-cards">
+            {addTickets
+                .filter(ticket => activeFilter === 'all' ? true : ticket.status === activeFilter)
+                .map((ticket, index) => (
+                  <div
+                    key={index}
+                    className={showFullDetails ? 'fullTicket-card' : 'ticket-card'}
+                  >
+                    <header>
+                      <h2>{ticket.name}</h2>
+                      {showFullDetails && <p>{ticket.desc}</p>}
+                      <div className="dropdown">
+                        <button className="dropbtn">⋮</button>
+                        <div className="dropdown-content">
+                          <a>Edit</a>
+                          <a onClick={() => deleteTicket(ticket)}>Delete</a>
+                          <a onClick={fullDetails}>Show Details</a>
+                        </div>
+                      </div>
+                    </header>
+                        <div className= {ticket.status === "open" ? "status open" : ticket.status === "in progress" ? "status inprogress" : "status closed"}>
+                            <p>Status:</p>
+                            <span>{ticket.status}</span>
+                        </div>
                   </div>
-                </header>
-                    <div className= {ticket.status === "open" ? "status open" : ticket.status === "in progress" ? "status inprogress" : "status closed"}>
-                        <p>Status:</p>
-                        <span>{ticket.status}</span>
-                    </div>
-              </div>
-            ))}
-          </div>
+                ))}
+          </div>}
         </div>}
       </section>
     </>

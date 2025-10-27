@@ -9,13 +9,12 @@ import LandingPage from './components/landingPage';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/ticketManagerReact">
+    <BrowserRouter basename="/ticketManagerReact/">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        
+        <Route path="/signUp" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

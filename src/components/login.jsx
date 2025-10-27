@@ -24,7 +24,7 @@ export default function Login() {
             storedUser.username === loginData.username && 
             storedUser.password === loginData.password) {
 
-            window.location.href = "/dashboard";
+            window.location.href = "/ticketManagerReact/dashboard";
         } else {
         
             setError('Invalid username or password');
