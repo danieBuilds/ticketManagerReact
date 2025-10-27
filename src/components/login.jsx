@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
 export default function Login() {
     const [loginData, setLoginData] = useState({
         username: '',
@@ -15,6 +16,7 @@ export default function Login() {
         }));
     }
 
+    const navigate = useNavigate();
     function handleSubmit(e) {
         e.preventDefault();
         
@@ -24,7 +26,7 @@ export default function Login() {
             storedUser.username === loginData.username && 
             storedUser.password === loginData.password) {
 
-            window.location.href = "/taskManager-react/dashboard";
+            navigate("/dashboard");
         } else {
         
             setError('Invalid username or password');

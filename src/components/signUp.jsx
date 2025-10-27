@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/signUp.css";
+import { useNavigate } from "react-router-dom";
 export default function SignUp() {
     
     const [user, setUser] = useState({
@@ -19,11 +20,12 @@ export default function SignUp() {
             [name]: value
         }));
     }
-
+    const navigate = useNavigate();
     function handleSubmit(e) {
+
         e.preventDefault();
         localStorage.setItem("user", JSON.stringify(user));
-        window.location.href = "/taskManager-react/dashboard";
+        navigate("/dashboard");
     }
 
     return(

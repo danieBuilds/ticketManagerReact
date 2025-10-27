@@ -9,7 +9,7 @@ import LandingPage from './components/landingPage'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename='/taskManager-react'>
+    <BrowserRouter basename='/ticketManagerReact'>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
