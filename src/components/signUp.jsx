@@ -23,7 +23,7 @@ export default function SignUp() {
     function handleSubmit(e) {
         e.preventDefault();
         localStorage.setItem("user", JSON.stringify(user));
-        window.location.href = "/ticketManagerReact/dashboard"
+        window.location.href = "/dashboard"
     }
 
     return(

@@ -6,9 +6,9 @@ export default function LandingPage() {
         const wasClicked = e.target.innerText;
 
         if(wasClicked === "Login"){
-            window.location.href = "/ticketManagerReact/login"
+            window.location.href = "/login"
         } else if (wasClicked === "Get Started"){
-            window.location.href = "/ticketManagerReact/signUp"
+            window.location.href = "/signUp"
         }
     }
   return (
