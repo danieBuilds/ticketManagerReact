@@ -23,7 +23,7 @@ export default function SignUp() {
     function handleSubmit(e) {
         e.preventDefault();
         localStorage.setItem("user", JSON.stringify(user));
-        window.location.href = "/dashboard"
+        navigate("/dashboard");
     }
 
     return(
