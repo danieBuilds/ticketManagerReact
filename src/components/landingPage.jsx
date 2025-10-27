@@ -4,7 +4,7 @@ import waveImg from "../assets/wave.svg";
 export default function LandingPage() {
     
     navigate = useNavigate();
-    function naviate(e) {
+    function navigate(e) {
         const wasClicked = e.target.innerText;
         
         if(wasClicked === "Login"){
@@ -37,10 +37,10 @@ export default function LandingPage() {
                     managment process made efficient
                 </p>
                 <div className="hero-button">
-                    <button onClick={naviate} type="button">
+                    <button onClick={navigate} type="button">
                         Get Started
                     </button>
-                    <button onClick={naviate} type="button">
+                    <button onClick={navigate} type="button">
                         Login
                     </button>
                 </div>
