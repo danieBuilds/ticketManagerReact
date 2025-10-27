@@ -23,7 +23,7 @@ export default function SignUp() {
     function handleSubmit(e) {
         e.preventDefault();
         localStorage.setItem("user", JSON.stringify(user));
-        navigate("/dashboard");
+        window.location.href = "/taskManager-react/dashboard";
     }
 
     return(

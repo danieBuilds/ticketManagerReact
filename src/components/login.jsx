@@ -24,7 +24,7 @@ export default function Login() {
             storedUser.username === loginData.username && 
             storedUser.password === loginData.password) {
 
-            navigate("/dashboard");
+            window.location.href = "/taskManager-react/dashboard";
         } else {
         
             setError('Invalid username or password');

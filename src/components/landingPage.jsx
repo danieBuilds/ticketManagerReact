@@ -1,16 +1,15 @@
 import "../styles/landingPage.css";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import waveImg from "../assets/wave.svg";
 export default function LandingPage() {
     
-    const navigater = useNavigate();
     function naviate(e) {
         const wasClicked = e.target.innerText;
         
         if(wasClicked === "Login"){
-            navigater("/login")
+            window.location.href = "/taskManager-react/login"
         } else if (wasClicked === "Get Started"){
-            navigater("/signUp")
+            window.location.href = "/taskManager-react/signUp"
         }
     }
   return (
