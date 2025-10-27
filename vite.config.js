@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/ticketManagerReact/',
+  base: process.env.NODE_ENV === 'production' ? '/ticketManagerReact/' : '/',
   plugins: [react()],
   build: {
     outDir: 'dist',
