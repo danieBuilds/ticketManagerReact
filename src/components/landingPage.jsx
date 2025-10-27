@@ -1,14 +1,16 @@
 import "../styles/landingPage.css";
+import { useNavigate } from "react-router-dom";
 import waveImg from "../assets/wave.svg";
 export default function LandingPage() {
     
+    const navigater = useNavigate();
     function naviate(e) {
         const wasClicked = e.target.innerText;
-
+        
         if(wasClicked === "Login"){
-            naviate("/login")
+            navigater("/login")
         } else if (wasClicked === "Get Started"){
-            naviate("/signUp")
+            navigater("/signUp")
         }
     }
   return (
