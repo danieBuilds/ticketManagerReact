@@ -1,10 +1,11 @@
 import "../styles/landingPage.css";
 import { useNavigate } from "react-router-dom";
 import waveImg from "../assets/wave.svg";
+
 export default function LandingPage() {
     
-    navigate = useNavigate();
-    function navigate(e) {
+    const navigate = useNavigate();
+    function handleNavigation(e) {
         const wasClicked = e.target.innerText;
         
         if(wasClicked === "Login"){
@@ -20,10 +21,10 @@ export default function LandingPage() {
                 <h1>tickHandler</h1>
             </div>
             <div className="nav-buttons">
-                <button onClick={naviate} type="button">
+                <button onClick={handleNavigation} type="button">
                     Login
                 </button>
-                <button onClick={naviate} type="button">
+                <button onClick={handleNavigation} type="button">
                     Get Started
                 </button>
             </div>
@@ -37,10 +38,10 @@ export default function LandingPage() {
                     managment process made efficient
                 </p>
                 <div className="hero-button">
-                    <button onClick={navigate} type="button">
+                    <button onClick={handleNavigation} type="button">
                         Get Started
                     </button>
-                    <button onClick={navigate} type="button">
+                    <button onClick={handleNavigation} type="button">
                         Login
                     </button>
                 </div>
