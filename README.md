@@ -1,16 +1,51 @@
-# React + Vite
+# 🎟 Ticket Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple CRUD (Create, Read, Update, Delete) ticket management system built in React, Vue, and Twig (PHP).
+This project was created as part of the HNG Internship Stage 3 task to demonstrate CRUD operations with Local Storage and basic authentication simulation.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## Frameworks & Libraries Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React Version
 
-## Expanding the ESLint configuration
+React (Vite or CRA)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React Router DOM
+
+vanilla CSS
+
+##  Setup & Execution Steps
+
+🧩 React Version
+
+1. Clone the repository
+
+git clone https://github.com/danieBuilds/ticketManagerReact.git
+cd ticketManagerReact
+
+
+2. Install dependencies
+
+npm install
+
+
+3. Run the project
+
+npm run dev
+
+
+4. Open in your browser: http://localhost:5173
+
+
+## Features
+
+Create, Read, Update, and Delete tickets
+
+Data persistence using Local Storage
+
+Basic simulated authentication
+
+Clean and responsive UI
+
+
